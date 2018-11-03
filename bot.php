@@ -240,6 +240,93 @@ function zodiak($keyword) {
 }
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
+function anime($keyword) {
+    $fullurl = 'https://myanimelist.net/api/anime/search.xml?q=' . $keyword;
+    $username = 'jamal3213';
+    $password = 'FZQYeZ6CE9is';
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_VERBOSE, 1);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
+    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+    curl_setopt($ch, CURLOPT_URL, $fullurl);
+    
+    $returned = curl_exec($ch);
+    $xml = new SimpleXMLElement($returned);
+    $parsed = array();
+    
+    $parsed['id'] = (string) $xml->entry[0]->id;
+    $parsed['image'] = (string) $xml->entry[0]->image;
+    $parsed['title'] = (string) $xml->entry[0]->title;
+    $parsed['desc'] = "Episode : ";
+    $parsed['desc'] .= $xml->entry[0]->episodes;
+    $parsed['desc'] .= "\nNilai : ";
+    $parsed['desc'] .= $xml->entry[0]->score;
+    $parsed['desc'] .= "\nTipe : ";
+    $parsed['desc'] .= $xml->entry[0]->type;
+    $parsed['synopsis'] = str_replace("<br />", "\n", html_entity_decode((string) $xml->entry[0]->synopsis, ENT_QUOTES | ENT_XHTML, 'UTF-8'));
+    return $parsed;
+}
+function manga($keyword) {
+    $fullurl = 'https://myanimelist.net/api/manga/search.xml?q=' . $keyword;
+    $username = 'jamal3213';
+    $password = 'FZQYeZ6CE9is';
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_VERBOSE, 1);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
+    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+    curl_setopt($ch, CURLOPT_URL, $fullurl);
+    $returned = curl_exec($ch);
+    $xml = new SimpleXMLElement($returned);
+    $parsed = array();
+    $parsed['id'] = (string) $xml->entry[0]->id;
+    $parsed['image'] = (string) $xml->entry[0]->image;
+    $parsed['title'] = (string) $xml->entry[0]->title;
+    $parsed['desc'] = "Episode : ";
+    $parsed['desc'] .= $xml->entry[0]->episodes;
+    $parsed['desc'] .= "\nNilai : ";
+    $parsed['desc'] .= $xml->entry[0]->score;
+    $parsed['desc'] .= "\nTipe : ";
+    $parsed['desc'] .= $xml->entry[0]->type;
+    $parsed['synopsis'] = str_replace("<br />", "\n", html_entity_decode((string) $xml->entry[0]->synopsis, ENT_QUOTES | ENT_XHTML, 'UTF-8'));
+    return $parsed;
+}
+function anime_syn($title) {
+    $parsed = anime($title);
+    $result = "Judul : " . $parsed['title'];
+    $result .= "\n\nSynopsis :\n" . $parsed['synopsis'];
+    return $result;
+}
+function manga_syn($title) {
+    $parsed = manga($title);
+    $result = "Judul : " . $parsed['title'];
+    $result .= "\n\nSynopsis :\n" . $parsed['synopsis'];
+    return $result;
+}
+function musiknya($keyword) {
+    $uri = "https://rest.farzain.com/api/joox.php?apikey=fDh6y7ZwXJ24eiArhGEJ55HgA&id=" . $keyword;
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $result = "「Music Result」\n";
+    $result .= "\n\nPenyanyinya: ";
+    $result .= $json['info']['penyanyi'];
+    $result .= "\n\nJudulnya: ";
+    $result .= $json['info']['judul'];
+    $result .= "\n\nAlbum: ";
+    $result .= $json['info']['album'];
+    $result .= "\nMp3: \n";
+    $result .= $json['audio']['mp3'];
+    $result .= "\n\nM4a: \n";
+    $result .= $json['audio']['m4a'];
+    $result .= "\n\nIcon: \n";
+    $result .= $json['gambar'];
+    $result .= "\n\nLirik: \n";
+    $result .= $json['lirik'];
+    return $result;
+}
+#-------------------------[Close]-------------------------#
+#-------------------------[Open]-------------------------#
 function br($keyword) {
     $uri = "https://rest.farzain.com/api/brainly.php?id=" .$keyword. "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
 
@@ -422,7 +509,7 @@ function qibla($keyword) {
 }
 //show menu, saat join dan command,menu
 if ($command == '/menu') {
-    $text .= "「Keyword GabzBot~」\n\n";
+    $text .= "「Keyword GabzBot, Special thx to Rpd~」\n\n";
     $text .= "- Help\n";
     $text .= "- /jam \n";
     $text .= "- /quotes \n";
@@ -443,8 +530,9 @@ if ($command == '/menu') {
   $text .= "- /brainly [pertanyaan] \n";
   $text .= "- /youtube [Judul] \n";
     $text .= "- /zodiak [tanggal lahir] \n";
-        $text .= "- /instagram [unsername] \n";
+        $text .= "- /instagram [username] \n";
         $text .= "- /jadwaltv [stasiun] \n";
+	$text .= "- /anime [nama] \n";
     $text .= "- /creator \n";
     $text .= "\n「Done~」";
     $balas = array(
@@ -837,6 +925,7 @@ if ($command == '/jam') {
         ); 
 }
 }
+
 if($message['type']=='text') {
         if ($command == '/jadwaltv') {
         $result = tv($options);
@@ -869,7 +958,7 @@ if($message['type']=='text') {
         );
     }
 }
-#-------------------------[Open]-------------------------#
+#-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#  
 if($message['type']=='text') {
     if ($command == '/instagram') { 
@@ -988,6 +1077,110 @@ if($message['type']=='text') {
 )
             ) 
         ); 
+    }
+}
+#-------------------------[Close]-------------------------#
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+	    if ($command == '/song') {
+        $result = musiknya($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+#-------------------------[Close]-------------------------#
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+	    if ($command == '/anime') {
+        $result = anime($options);
+        $altText = "Title : " . $result['title'];
+        $altText .= "\n\n" . $result['desc'];
+        $altText .= "\nMAL Page : https://myanimelist.net/anime/" . $result['id'];
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'template',
+                    'altText' => $altText,
+                    'template' => array(
+                        'type' => 'buttons',
+                        'title' => $result['title'],
+                        'thumbnailImageUrl' => $result['image'],
+                        'text' => $result['desc'],
+                        'actions' => array(
+                            array(
+                                'type' => 'postback',
+                                'label' => 'Baca Sinopsis-nya',
+                                'data' => 'action=add&itemid=123',
+                                'text' => '/anime-syn ' . $options
+                            ),
+                            array(
+                                'type' => 'uri',
+                                'label' => 'Website MAL',
+                                'uri' => 'https://myanimelist.net/anime/' . $result['id']
+                            )
+                        )
+                    )
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+	    if ($command == '/manga') {
+        $result = manga($options);
+        $altText = "Title : " . $result['title'];
+        $altText .= "\n\n" . $result['desc'];
+        $altText .= "\nMAL Page : https://myanimelist.net/manga/" . $result['id'];
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'template',
+                    'altText' => $altText,
+                    'template' => array(
+                        'type' => 'buttons',
+                        'title' => $result['title'],
+                        'thumbnailImageUrl' => $result['image'],
+                        'text' => $result['desc'],
+                        'actions' => array(
+                            array(
+                                'type' => 'postback',
+                                'label' => 'Baca Sinopsis-nya',
+                                'data' => 'action=add&itemid=123',
+                                'text' => '/manga-syn' . $options
+                            ),
+                            array(
+                                'type' => 'uri',
+                                'label' => 'Website MAL',
+                                'uri' => 'https://myanimelist.net/manga/' . $result['id']
+                            )
+                        )
+                    )
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+	    if ($command == '/anime-syn') {
+        $result = anime_syn($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
     }
 }
 #-------------------------[Close]-------------------------#
@@ -1361,12 +1554,12 @@ if($message['type']=='text') {
                           ),
                           1 => 
                           array (
-                            'imageUrl' => 'https://rest.farzain.com/api/photofunia/neon_sign.php?text=RpdBot&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA',
+                            'imageUrl' => 'https://rest.farzain.com/api/photofunia/neon_sign.php?text=GabzBot&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA',
                             'action' => 
                             array (
                               'type' => 'message',
                               'label' => 'Neon Teks',
-                              'text' => 'Contoh: /neon RpdBot Mantap',
+                              'text' => 'Contoh: /neon GabzBot',
                             ),
                           ),
                           2 => 
@@ -1376,7 +1569,7 @@ if($message['type']=='text') {
                             array (
                               'type' => 'message',
                               'label' => 'TTS',
-                              'text' => 'Contoh: /say Mantap Jiwa',
+                              'text' => 'Contoh: /say Halo',
                             ),
                           ),
                           3 => 
