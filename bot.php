@@ -939,7 +939,7 @@ if($message['type']=='text') {
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
       if ($command == '/anime') {
-        $result = youtube($options);
+        $result = anime($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
