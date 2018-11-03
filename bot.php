@@ -961,7 +961,7 @@ if($message['type']=='text') {
                   0 => 
                   array (
                     'type' => 'uri',
-                    'label' => 'Youtube',
+                    'label' => 'Tonton',
                     'uri' => $result['a1'],
                   ),
                 ),
@@ -976,7 +976,7 @@ if($message['type']=='text') {
                   0 => 
                   array (
                     'type' => 'uri',
-                    'label' => 'Youtube',
+                    'label' => 'Tonton',
                     'uri' => $result['a2'],
                   ),
                 ),
@@ -991,7 +991,7 @@ if($message['type']=='text') {
                   0 => 
                   array (
                     'type' => 'uri',
-                    'label' => 'Youtube',
+                    'label' => 'Tonton',
                     'uri' => $result['a3'],
                   ),
                 ),
@@ -1006,7 +1006,7 @@ if($message['type']=='text') {
                   0 => 
                   array (
                     'type' => 'uri',
-                    'label' => 'Youtube',
+                    'label' => 'Tonton',
                     'uri' => $result['a4'],
                   ),
                 ),
@@ -1021,7 +1021,7 @@ if($message['type']=='text') {
                   0 => 
                   array (
                     'type' => 'uri',
-                    'label' => 'Youtube',
+                    'label' => 'Tonton',
                     'uri' => $result['a5'],
                   ),
                 ),
@@ -1036,7 +1036,7 @@ if($message['type']=='text') {
                   0 => 
                   array (
                     'type' => 'uri',
-                    'label' => 'Youtube',
+                    'label' => 'Tonton',
                     'uri' => $result['a6'],
                   ),
                 ),
@@ -1051,7 +1051,7 @@ if($message['type']=='text') {
                   0 => 
                   array (
                     'type' => 'uri',
-                    'label' => 'Youtube',
+                    'label' => 'Tonton',
                     'uri' => $result['a7'],
                   ),
                 ),
@@ -1066,7 +1066,7 @@ if($message['type']=='text') {
                   0 => 
                   array (
                     'type' => 'uri',
-                    'label' => 'Youtube',
+                    'label' => 'Tonton',
                     'uri' => $result['a8'],
                   ),
                 ),
