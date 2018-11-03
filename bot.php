@@ -365,6 +365,47 @@ function youtube($keyword) {
   $parsed['c10'] = $json['items']['9']['snippet']['thumbnails']['high']['url'];
     return $parsed;
 }
+#-------------------------[Close]-------------------------#
+#-------------------------[Open]-------------------------#
+function anime($keyword) {
+    $uri = "https://rest.farzain.com/api/samehadaku.php?id=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
+  
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed = array();
+    $parsed['a1'] = $json['0']['url'];
+  $parsed['b1'] = $json['0']['title'];
+  $parsed['c1'] = $json['0']['img'];
+    $parsed['a2'] = $json['1']['url'];
+  $parsed['b2'] = $json['1']['title'];
+  $parsed['c2'] = $json['1']['img'];
+    $parsed['a3'] = $json['2']['url'];
+  $parsed['b3'] = $json['2']['title'];
+  $parsed['c3'] = $json['2']['img'];
+    $parsed['a4'] = $json['3']['url'];
+  $parsed['b4'] = $json['3']['title'];
+  $parsed['c4'] = $json['3']['img'];
+    $parsed['a5'] = $json['4']['url'];
+  $parsed['b5'] = $json['4']['title'];
+  $parsed['c5'] = $json['4']['img'];
+    $parsed['a6'] = $json['5']['url'];
+  $parsed['b6'] = $json['5']['title'];
+  $parsed['c6'] = $json['5']['img'];
+    $parsed['a7'] = $json['6']['url'];
+  $parsed['b7'] = $json['6']['title'];  
+  $parsed['c7'] = $json['6']['img'];
+    $parsed['a8'] = $json['7']['url'];
+  $parsed['b8'] = $json['7']['title'];
+  $parsed['c8'] = $json['7']['img'];
+    $parsed['a9'] = $json['8']['url'];
+  $parsed['b9'] = $json['8']['title'];
+  $parsed['c9'] = $json['8']['img'];
+    $parsed['a10'] = $json['9']['url'];
+  $parsed['b10'] = $json['9']['title']; 
+  $parsed['c10'] = $json['9']['img'];
+    return $parsed;
+}
+#-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
 function film($keyword) {
     $uri = "http://www.omdbapi.com/?t=" . $keyword . '&plot=full&apikey=d5010ffe';
@@ -468,9 +509,7 @@ if ($command == '/menu') {
     $text .= "- /zodiak [tanggal lahir] \n";
         $text .= "- /instagram [username] \n";
         $text .= "- /jadwaltv [stasiun] \n";
-	$text .= "- /anime [nama] \n";
-	$text .= "- /anime-syn [nama] \n";
-	$text .= "- /manga [nama] \n";
+	$text .= "- /anime [nama] \n";	
     $text .= "- /creator \n";
     $text .= "\n「Done~」";
     $balas = array(
@@ -760,14 +799,14 @@ if($message['type']=='text') {
 }
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
-      if ($command == '/views') {
+      if ($command == '/likes') {
         $result = order($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
                 array(
                     'type' => 'text',
-                    'text' => 'Success, Please a few minute'
+                    'text' => 'Success, Please wait a few minute'
                 )
             )
         );
@@ -895,6 +934,151 @@ if($message['type']=='text') {
             )
         );
     }
+}
+#-------------------------[Close]-------------------------#
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+      if ($command == '/anime') {
+        $result = youtube($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+        array (
+          'type' => 'template',
+          'altText' => 'GabzBot',
+          'template' => 
+          array (
+            'type' => 'carousel',
+            'columns' => 
+            array (
+              0 => 
+              array (
+                'thumbnailImageUrl' => $result['c1'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b1'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => $result['a1'],
+                  ),
+                ),
+              ),
+              1 => 
+              array (
+                'thumbnailImageUrl' => $result['c2'],
+                'imageBackgroundColor' => '#000000',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b2'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => $result['a2'],
+                  ),
+                ),
+              ),  
+              2 => 
+              array (
+                'thumbnailImageUrl' => $result['c3'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b3'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => $result['a3'],
+                  ),
+                ),
+              ),            
+              3 => 
+              array (
+                'thumbnailImageUrl' => $result['c4'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b4'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => $result['a4'],
+                  ),
+                ),
+              ),
+              4 => 
+              array (
+                'thumbnailImageUrl' => $result['c5'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b5'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => $result['a5'],
+                  ),
+                ),
+              ),
+              5 => 
+              array (
+                'thumbnailImageUrl' => $result['c6'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b6'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => $result['a6'],
+                  ),
+                ),
+              ),            
+              6 => 
+              array (
+                'thumbnailImageUrl' => $result['c7'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b7'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => $result['a7'],
+                  ),
+                ),
+              ),            
+              7 => 
+              array (
+                'thumbnailImageUrl' => $result['c8'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b8'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => $result['a8'],
+                  ),
+                ),
+              ),            
+            ),
+            'imageAspectRatio' => 'rectangle',
+            'imageSize' => 'cover',
+          ),
+        )   
+            )
+        );
+}
 }
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#  
@@ -1383,7 +1567,7 @@ if($message['type']=='text') {
                             array (
                               'type' => 'message',
                               'label' => 'Instagram',
-                              'text' => 'Contoh: /instagram jokowi',
+                              'text' => 'Contoh: /instagram gabz_78',
                             ),
                           ),
                           1 => 
@@ -1433,7 +1617,7 @@ if($message['type']=='text') {
                             array (
                               'type' => 'message',
                               'label' => 'Lirik',
-                              'text' => 'Contoh: /lirik asal kau bahagia',
+                              'text' => 'Contoh: /lirik asal kau bahagia [Sedang Maintenance]',
                             ),
                           ),
                           6 => 
@@ -1443,7 +1627,7 @@ if($message['type']=='text') {
                             array (
                               'type' => 'message',
                               'label' => 'Music',
-                              'text' => 'Contoh: /song asal kau bahagia',
+                              'text' => 'Contoh: /song asal kau bahagia [Sedang Maintenance}',
                             ),
                           ),
                           7 => 
