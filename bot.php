@@ -114,7 +114,7 @@ function wallgrafitti($keyword) {
     $uri = "https://rest.farzain.com/api/photofunia/graffiti_wall.php?text1=" . $keyword . "&text2=grafitti&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA"; 
     $response = Unirest\Request::get("$uri"); 
     $json = json_decode($response->raw_body, true); 
-    $result .= "https://rest.farzain.com/api/photofunia/light_graffiti.php?text=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
+    $result .= "https://rest.farzain.com/api/photofunia/graffiti_wall.php?text1=" . $keyword . "&text2=grafitti&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
     return $result; 
 }
 #-------------------------[Close]-------------------------#
@@ -495,7 +495,7 @@ function qibla($keyword) {
 }
 //show menu, saat join dan command,menu
 if ($command == '/menu') {
-    $text .= "「Keyword GabzBot, Special thx to Rpd~」\n\n";
+    $text .= "「Keyword GabzBot~」\n\n";
     $text .= "- Help\n";
     $text .= "- /jam \n";
     $text .= "- /quotes \n";
@@ -588,7 +588,7 @@ if($message['type']=='text') {
             'messages' => array(
         array (
           'type' => 'template',
-          'altText' => 'GabzBot',
+          'altText' => 'Result Youtube',
           'template' => 
           array (
             'type' => 'carousel',
@@ -732,7 +732,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
   'type' => 'flex',
-  'altText' => 'this is a flex message',
+  'altText' => 'Result Quotes',
   'contents' => 
   array (
     'type' => 'bubble',
@@ -833,7 +833,7 @@ if ($command == '/jam') {
             'messages' => array( 
                 array ( 
                   'type' => 'template', 
-                  'altText' => 'Jam Indonesia', 
+                  'altText' => 'Result Jam Indonesia', 
                   'template' =>  
                   array ( 
                     'type' => 'carousel', 
@@ -921,7 +921,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
   'type' => 'flex',
-  'altText' => 'this is a flex message',
+  'altText' => 'Result Jadwal-Tv',
   'contents' => 
   array (
     'type' => 'bubble',
@@ -955,7 +955,7 @@ if($message['type']=='text') {
             'messages' => array(
         array (
           'type' => 'template',
-          'altText' => 'GabzBot',
+          'altText' => 'Result Anime',
           'template' => 
           array (
             'type' => 'carousel',
@@ -1171,7 +1171,7 @@ if($message['type']=='text') {
             'messages' => array( 
                 array (
   'type' => 'flex',
-  'altText' => 'this is a flex message',
+  'altText' => 'Result Ahli',
   'contents' => 
   array (
     'type' => 'bubble',
@@ -1239,7 +1239,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
   'type' => 'flex',
-  'altText' => 'this is a flex message',
+  'altText' => 'Result Zodiak',
   'contents' => 
   array (
     'type' => 'bubble',
@@ -1277,7 +1277,7 @@ if($message['type']=='text') {
                 ),
                 array (
   'type' => 'flex',
-  'altText' => 'this is a flex message',
+  'altText' => 'Result Lirik',
   'contents' => 
   array (
     'type' => 'bubble',
@@ -1345,7 +1345,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
   'type' => 'flex',
-  'altText' => 'this is a flex message',
+  'altText' => 'Result Film-Syn',
   'contents' => 
   array (
     'type' => 'bubble',
@@ -1380,7 +1380,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
   'type' => 'flex',
-  'altText' => 'this is a flex message',
+  'altText' => 'Result Film',
   'contents' => 
   array (
     'type' => 'bubble',
@@ -1415,7 +1415,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
   'type' => 'flex',
-  'altText' => 'this is a flex message',
+  'altText' => 'Result Shalat',
   'contents' => 
   array (
     'type' => 'bubble',
@@ -1448,7 +1448,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
   'type' => 'flex',
-  'altText' => 'this is a flex message',
+  'altText' => 'Result Wikipedia',
   'contents' => 
   array (
     'type' => 'bubble',
@@ -1481,7 +1481,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
                   'type' => 'flex',
-                  'altText' => 'this is a flex message',
+                  'altText' => 'Result Shalat',
                   'contents' => 
                   array (
                     'type' => 'bubble',
@@ -1564,7 +1564,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
                       'type' => 'template',
-                      'altText' => 'this is a image carousel template',
+                      'altText' => 'Menu Utama',
                       'template' => 
                       array (
                         'type' => 'image_carousel',
@@ -1757,7 +1757,7 @@ if($message['type']=='text') {
             'messages' => array( 
                 array ( 
                         'type' => 'template', 
-                          'altText' => 'Light teks', 
+                          'altText' => 'Wall Graffiti', 
                           'template' =>  
                           array ( 
                             'type' => 'buttons', 
@@ -1792,7 +1792,7 @@ if($message['type']=='text') {
             'messages' => array( 
                 array ( 
                         'type' => 'template', 
-                          'altText' => 'Light teks', 
+                          'altText' => 'Light Grafitti', 
                           'template' =>  
                           array ( 
                             'type' => 'buttons', 
