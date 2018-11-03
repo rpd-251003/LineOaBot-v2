@@ -1749,7 +1749,7 @@ if($message['type']=='text') {
 }
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
-        if ($command == '/lightgrafitti') { 
+        if ($command == '/wallgrafitti') { 
      
         $result = wallgrafitti($options);
         $balas = array( 
