@@ -304,6 +304,7 @@ function manga_syn($title) {
     $result .= "\n\nSynopsis :\n" . $parsed['synopsis'];
     return $result;
 }
+#-------------------------[Open]-------------------------#
 function musiknya($keyword) {
     $uri = "https://rest.farzain.com/api/joox.php?id=" .$keyword. "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
     $response = Unirest\Request::get("$uri");
