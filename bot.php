@@ -500,7 +500,7 @@ if ($command == '/menu') {
     $text .= "- /neon [teks] \n";
     $text .= "- /ahli [nama] \n";
     $text .= "- /arti-nama [nama] \n";
-    $text .= "- /light [teks] \n";
+    $text .= "- /lightgrafitti [teks] \n";
     $text .= "- /film-syn [Judul] \n";
     $text .= "- /lirik [Judul] \n";
     $text .= "- /wikipedia [Judul] \n";
@@ -1739,7 +1739,7 @@ if($message['type']=='text') {
 }
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
-        if ($command == '/light') { 
+        if ($command == '/lightgrafitti') { 
      
         $result = light($options);
         $balas = array( 
