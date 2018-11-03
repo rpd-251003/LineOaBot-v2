@@ -1084,7 +1084,7 @@ if($message['type']=='text') {
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
-	    if ($command == '/song') {
+	    if ($command == '/musik') {
         $result = musiknya($options);
         $balas = array(
             'replyToken' => $replyToken,
