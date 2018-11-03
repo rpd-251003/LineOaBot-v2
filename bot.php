@@ -1016,22 +1016,6 @@ if($message['type']=='text') {
         );
 }
 }
-if($message['type']=='text') {
-    if ($command == '/song') {
-
-        $result = song($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array (
-                'type' => 'audio',
-                'originalContentUrl' => $result,
-                'duration' => 10000,
-                )
-            )
-        );
-}
-}
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
 if ($message['type'] == 'text') {
