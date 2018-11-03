@@ -510,6 +510,7 @@ if ($command == '/menu') {
     $text .= "- /ahli [nama] \n";
     $text .= "- /arti-nama [nama] \n";
     $text .= "- /lightgrafitti [teks] \n";
+    $text .= "- /wallgrafitti [teks] \n";
     $text .= "- /film-syn [Judul] \n";
     $text .= "- /lirik [Judul] \n";
     $text .= "- /wikipedia [Judul] \n";
