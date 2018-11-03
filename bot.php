@@ -533,6 +533,8 @@ if ($command == '/menu') {
         $text .= "- /instagram [username] \n";
         $text .= "- /jadwaltv [stasiun] \n";
 	$text .= "- /anime [nama] \n";
+	$text .= "- /anime-syn [nama] \n";
+	$text .= "- /manga [nama] \n";
     $text .= "- /creator \n";
     $text .= "\n「Done~」";
     $balas = array(
