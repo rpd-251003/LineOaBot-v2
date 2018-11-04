@@ -1198,8 +1198,8 @@ if($message['type']=='text') {
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
-	    if ($command == '/musik') {
-        $result = musiknya($options);
+	    if ($command == '/lirik') {
+        $result = lirik($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
@@ -1240,44 +1240,6 @@ if($message['type']=='text') {
                 array (
   'type' => 'flex',
   'altText' => 'Result Zodiak',
-  'contents' => 
-  array (
-    'type' => 'bubble',
-    'body' => 
-    array (
-      'type' => 'box',
-      'layout' => 'vertical',
-      'contents' => 
-      array (
-        0 => 
-        array (
-          'type' => 'text',
-          'text' => $result,
-          'wrap' => True,
-        ),
-      ),
-    ),
-  ),
-)
-            )
-        );
-    }
-}
-if($message['type']=='text') {
-        if ($command == '/lirik') {
-        $result2 = imgj($options);
-        $result = lirik($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                  'type' => 'image',
-                  'originalContentUrl' => $result2,
-                  'previewImageUrl' => $result2
-                ),
-                array (
-  'type' => 'flex',
-  'altText' => 'Result Lirik',
   'contents' => 
   array (
     'type' => 'bubble',
