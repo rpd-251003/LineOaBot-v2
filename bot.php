@@ -1148,6 +1148,23 @@ if($message['type']=='text') {
 }
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+    if ($command == '/audio') {
+        $result = audio++($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                'type' => 'audio',
+                'originalContentUrl' => $json['audio']['mp3'],
+                'duration' => 10000,
+                )
+            )
+        );
+}
+}
+#-------------------------[Close]-------------------------#
+#-------------------------[Open]-------------------------#
 if ($message['type'] == 'text') {
     if ($command == '/definition') {
         $balas = array(
