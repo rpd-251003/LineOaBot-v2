@@ -73,6 +73,46 @@ function coolt($keyword) {
 }
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
+function songxxx($keyword) {
+    $uri = "https://rest.farzain.com/api/joox/search.php?apikey=fDh6y7ZwXJ24eiArhGEJ55HgA&id=" .$keyword. "";
+  
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed = array();
+    $parsed['a1'] = $json['0']['judul'];
+  $parsed['b1'] = $json['0']['penyanyi'];
+  $parsed['c1'] = $json['0']['songid'];
+    $parsed['a2'] = $json['1']['judul'];
+  $parsed['b2'] = $json['1']['penyanyi'];
+  $parsed['c2'] = $json['1']['songid'];
+    $parsed['a3'] = $json['2']['judul'];
+  $parsed['b3'] = $json['2']['penyanyi'];
+  $parsed['c3'] = $json['2']['songid'];
+    $parsed['a4'] = $json['3']['judul'];
+  $parsed['b4'] = $json['3']['penyanyi'];
+  $parsed['c4'] = $json['3']['songid'];
+    $parsed['a5'] = $json['4']['judul'];
+  $parsed['b5'] = $json['4']['penyanyi'];
+  $parsed['c5'] = $json['4']['songid'];
+    $parsed['a6'] = $json['5']['judul'];
+  $parsed['b6'] = $json['5']['penyanyi'];
+  $parsed['c6'] = $json['5']['songid'];
+    $parsed['a7'] = $json['6']['judul'];
+  $parsed['b7'] = $json['6']['penyanyi'];  
+  $parsed['c7'] = $json['6']['songid'];
+    $parsed['a8'] = $json['7']['judul'];
+  $parsed['b8'] = $json['7']['penyanyi'];
+  $parsed['c8'] = $json['7']['songid'];
+    $parsed['a9'] = $json['8']['judul'];
+  $parsed['b9'] = $json['8']['penyanyi'];
+  $parsed['c9'] = $json['8']['songid'];
+    $parsed['a10'] = $json['9']['judul'];
+  $parsed['b10'] = $json['9']['penyanyi']; 
+  $parsed['c10'] = $json['9']['songid'];
+    return $parsed;
+}
+#-------------------------[Close]-------------------------#
+#-------------------------[Open]-------------------------#
 function qr($keyword) { 
     $uri = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20171227T171852Z.fda4bd604c7bf41f.f939237fb5f802608e9fdae4c11d9dbdda94a0b5&text=" . $keyword . "&lang=id-id"; 
  
@@ -948,6 +988,151 @@ if($message['type']=='text') {
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
+      if ($command == '/joox') {
+        $result = songxxx($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+        array (
+          'type' => 'template',
+          'altText' => 'Result Song',
+          'template' => 
+          array (
+            'type' => 'carousel',
+            'columns' => 
+            array (
+              0 => 
+              array (
+                'thumbnailImageUrl' => https://1.bp.blogspot.com/-oUlG9F4nUh8/Whjx7YQg3BI/AAAAAAAAAPY/FS4t8irOj0oMCvMX5VPE_SyjW7vrE1nIgCLcBGAs/s535/D176CA0A-DC43-4290-B697-71DCB02BE15E-e1472443861587.jpg,
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['a1'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Audio',
+                    'text' => '/audio '.$result['c1'],
+                  ),
+                ),
+              ),
+              1 => 
+              array (
+                'thumbnailImageUrl' => https://1.bp.blogspot.com/-oUlG9F4nUh8/Whjx7YQg3BI/AAAAAAAAAPY/FS4t8irOj0oMCvMX5VPE_SyjW7vrE1nIgCLcBGAs/s535/D176CA0A-DC43-4290-B697-71DCB02BE15E-e1472443861587.jpg,
+                'imageBackgroundColor' => '#000000',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['a2'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Audio',
+                    'text' => '/audio '.$result['c2'],
+                  ),
+                ),
+              ),  
+              2 => 
+              array (
+                'thumbnailImageUrl' => https://1.bp.blogspot.com/-oUlG9F4nUh8/Whjx7YQg3BI/AAAAAAAAAPY/FS4t8irOj0oMCvMX5VPE_SyjW7vrE1nIgCLcBGAs/s535/D176CA0A-DC43-4290-B697-71DCB02BE15E-e1472443861587.jpg,
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['a3'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Audio',
+                    'text' => '/audio '.$result['c3'],
+                  ),
+                ),
+              ),            
+              3 => 
+              array (
+                'thumbnailImageUrl' => https://1.bp.blogspot.com/-oUlG9F4nUh8/Whjx7YQg3BI/AAAAAAAAAPY/FS4t8irOj0oMCvMX5VPE_SyjW7vrE1nIgCLcBGAs/s535/D176CA0A-DC43-4290-B697-71DCB02BE15E-e1472443861587.jpg,
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['a4'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Audio',
+                    'text' => '/audio '.$result['c4'],
+                  ),
+                ),
+              ),
+              4 => 
+              array (
+                'thumbnailImageUrl' => https://1.bp.blogspot.com/-oUlG9F4nUh8/Whjx7YQg3BI/AAAAAAAAAPY/FS4t8irOj0oMCvMX5VPE_SyjW7vrE1nIgCLcBGAs/s535/D176CA0A-DC43-4290-B697-71DCB02BE15E-e1472443861587.jpg,
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['a5'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Audio',
+                    'text' => '/audio '.$result['c5'],
+                  ),
+                ),
+              ),
+              5 => 
+              array (
+                'thumbnailImageUrl' => https://1.bp.blogspot.com/-oUlG9F4nUh8/Whjx7YQg3BI/AAAAAAAAAPY/FS4t8irOj0oMCvMX5VPE_SyjW7vrE1nIgCLcBGAs/s535/D176CA0A-DC43-4290-B697-71DCB02BE15E-e1472443861587.jpg,
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['a6'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Audio',
+                    'text' => '/audio '.$result['c6'],
+                  ),
+                ),
+              ),            
+              6 => 
+              array (
+                'thumbnailImageUrl' => https://1.bp.blogspot.com/-oUlG9F4nUh8/Whjx7YQg3BI/AAAAAAAAAPY/FS4t8irOj0oMCvMX5VPE_SyjW7vrE1nIgCLcBGAs/s535/D176CA0A-DC43-4290-B697-71DCB02BE15E-e1472443861587.jpg,
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['a7'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Audio',
+                    'text' => '/audio '.$result['c7'],
+                  ),
+                ),
+              ),            
+              7 => 
+              array (
+                'thumbnailImageUrl' => https://1.bp.blogspot.com/-oUlG9F4nUh8/Whjx7YQg3BI/AAAAAAAAAPY/FS4t8irOj0oMCvMX5VPE_SyjW7vrE1nIgCLcBGAs/s535/D176CA0A-DC43-4290-B697-71DCB02BE15E-e1472443861587.jpg,
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['a8'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Audio',
+                    'text' => '/audio '.$result['c8'],
+                  ),
+                ),
+              ),            
+            ),
+            'imageAspectRatio' => 'rectangle',
+            'imageSize' => 'cover',
+          ),
+        )   
+            )
+        );
+}
+}
+#-------------------------[Close]-------------------------#
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
       if ($command == '/anime') {
         $result = anime($options);
         $balas = array(
@@ -1616,7 +1801,7 @@ if($message['type']=='text') {
                             array (
                               'type' => 'message',
                               'label' => 'Music',
-                              'text' => 'Contoh: /song asal kau bahagia [Sedang Maintenance}',
+                              'text' => 'Contoh: /joox asal kau bahagia [Sedang Maintenance}',
                             ),
                           ),
                           7 => 
