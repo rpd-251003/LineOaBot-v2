@@ -198,7 +198,7 @@ function tts($keyword) {
     return $result; 
 }
 function audio($keyword) { 
-    $uri = "https://rest.farzain.com/api/joox/info.php?apikey=fDh6y7ZwXJ24eiArhGEJ55HgA&songid=" .$keyword. ""; 
+    $uri = "https://rest.farzain.com/api/joox/info.php?apikey=fDh6y7ZwXJ24eiArhGEJ55HgA&songid=" .$keyword; 
 
     $response = Unirest\Request::get("$uri"); 
     $json = json_decode($response->raw_body, true);
