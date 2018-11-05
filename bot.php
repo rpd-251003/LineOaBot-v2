@@ -118,6 +118,15 @@ function light($keyword) {
 }
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
+function linepostdownload($keyword) { 
+    $uri = "https://rest.farzain.com/api/special/line.php?id=" .$keyword. "&apikey=ppqeuy"; 
+    $response = Unirest\Request::get("$uri"); 
+    $json = json_decode($response->raw_body, true); 
+    $result .= $json['result'];
+    return $result; 
+}
+#-------------------------[Close]-------------------------#
+#-------------------------[Open]-------------------------#
 function quotes($keyword) {
     $uri = "https://rest.farzain.com/api/motivation.php?apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
     $response = Unirest\Request::get("$uri");
@@ -1592,12 +1601,12 @@ if($message['type']=='text') {
                           ),
                           5 => 
                           array (
-                            'imageUrl' => 'https://2.bp.blogspot.com/-rj1nxBPkzT0/UEJCW4qHsGI/AAAAAAAAAu0/6xKNlKRHi9U/s1600/perahi+kertas.jpg',
+                            'imageUrl' => 'https://www.google.co.id/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiXmsrWob7eAhVFRo8KHUoABQAQjRx6BAgBEAU&url=https%3A%2F%2Fwww.vexels.com%2Fpng-svg%2Fpreview%2F137381%2Fline-icon-logo&psig=AOvVaw0k7oKHr0eQXDQxkwoh3ghI&ust=1541542019776748',
                             'action' => 
                             array (
                               'type' => 'message',
-                              'label' => 'Lirik',
-                              'text' => 'Contoh: /lirik asal kau bahagia [Sedang Maintenance]',
+                              'label' => 'Line Downloader',
+                              'text' => 'Contoh: /linedownload [URL Post]',
                             ),
                           ),
                           6 => 
@@ -1607,7 +1616,7 @@ if($message['type']=='text') {
                             array (
                               'type' => 'message',
                               'label' => 'Music',
-                              'text' => 'Contoh: /joox asal kau bahagia [Sedang Maintenance}',
+                              'text' => 'Contoh: /joox asal kau bahagia',
                             ),
                           ),
                           7 => 
@@ -1752,6 +1761,42 @@ if($message['type']=='text') {
         ); 
     }
 }
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+        if ($command == '/linedownload') { 
+     
+        $result = linepostdownload($options);
+        $balas = array( 
+            'replyToken' => $replyToken, 
+            'messages' => array( 
+                array ( 
+                        'type' => 'template', 
+                          'altText' => 'Line Downloader', 
+                          'template' =>  
+                          array ( 
+                            'type' => 'buttons', 
+                            'thumbnailImageUrl' => 'https://www.google.co.id/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiXmsrWob7eAhVFRo8KHUoABQAQjRx6BAgBEAU&url=https%3A%2F%2Fwww.vexels.com%2Fpng-svg%2Fpreview%2F137381%2Fline-icon-logo&psig=AOvVaw0k7oKHr0eQXDQxkwoh3ghI&ust=1541542019776748' 
+                            'imageAspectRatio' => 'rectangle', 
+                            'imageSize' => 'cover', 
+                            'imageBackgroundColor' => '#FFFFFF', 
+                            'title' => 'Line Post Downloader', 
+                            'text' => 'Open In Your Browser', 
+                            'actions' =>  
+                            array ( 
+                              0 =>  
+                              array ( 
+                                'type' => 'uri', 
+                                'label' => 'Click Here', 
+                                'uri' => $result, 
+                              ), 
+                            ), 
+                          ), 
+                        ) 
+            ) 
+        ); 
+    }
+}
+
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
         if ($command == '/lightgrafitti') { 
