@@ -201,8 +201,8 @@ function audio($keyword) {
     $uri = "https://rest.farzain.com/api/joox/info.php?apikey=fDh6y7ZwXJ24eiArhGEJ55HgA&songid=" .$keyword; 
 
     $response = Unirest\Request::get("$uri"); 
-    $parsed = $json['audio']['mp3'];
-    return $parsed; 
+    $result = $json['audio']['mp3'];
+    return $result; 
 }
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
@@ -1145,7 +1145,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
                 'type' => 'audio',
-                'originalContentUrl' => $result['audio']['mp3'],
+                'originalContentUrl' => $result['mp3'],
                 'duration' => 1000000,
                 )
             )
