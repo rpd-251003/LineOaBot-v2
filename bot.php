@@ -1592,12 +1592,12 @@ if($message['type']=='text') {
                           ),
                           5 => 
                           array (
-                            'imageUrl' => 'https://www.google.co.id/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiXmsrWob7eAhVFRo8KHUoABQAQjRx6BAgBEAU&url=https%3A%2F%2Fwww.vexels.com%2Fpng-svg%2Fpreview%2F137381%2Fline-icon-logo&psig=AOvVaw0k7oKHr0eQXDQxkwoh3ghI&ust=1541542019776748',
+                            'imageUrl' => 'https://rest.farzain.com/api/special/fansign/cosplay/cosplay.php?apikey=ppqeuy&text=GabzBot',
                             'action' => 
                             array (
                               'type' => 'message',
-                              'label' => 'Line Downloader',
-                              'text' => 'Contoh: /linedownload [URL Post]',
+                              'label' => 'Fansign',
+                              'text' => 'Contoh: /fs GabzBot',
                             ),
                           ),
                           6 => 
