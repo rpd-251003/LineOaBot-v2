@@ -1141,19 +1141,18 @@ if($message['type']=='text') {
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
-    if ($command == '/audio') {
+	    if ($command == '/audio') {
         $result = audio($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
-                array (
-                'type' => 'audio',
-                'originalContentUrl' => $result audio['mp3'],
-                'duration' => 1000000,
+                array(
+                    'type' => 'text',
+                    'text' => $result
                 )
             )
         );
-}
+    }
 }
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
