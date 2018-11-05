@@ -118,7 +118,7 @@ function light($keyword) {
 }
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
-function linepostdownload($keyword) { 
+function linepostd($keyword) { 
     $uri = "https://rest.farzain.com/api/special/line.php?id=" .$keyword. "&apikey=ppqeuy"; 
     $response = Unirest\Request::get("$uri"); 
     $json = json_decode($response->raw_body, true); 
@@ -1765,7 +1765,7 @@ if($message['type']=='text') {
 if($message['type']=='text') {
         if ($command == '/linedownload') { 
      
-        $result = linepostdownload($options);
+        $result = linepost($options);
         $balas = array( 
             'replyToken' => $replyToken, 
             'messages' => array( 
@@ -1787,7 +1787,7 @@ if($message['type']=='text') {
                               array ( 
                                 'type' => 'uri', 
                                 'label' => 'Click Here', 
-                                'uri' => $result, 
+                                'uri' => $result['result'], 
                               ), 
                             ), 
                           ), 
@@ -1796,7 +1796,6 @@ if($message['type']=='text') {
         ); 
     }
 }
-
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
         if ($command == '/lightgrafitti') { 
