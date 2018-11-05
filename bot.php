@@ -198,9 +198,12 @@ function tts($keyword) {
     return $result; 
 }
 function audio($keyword) { 
-    $uri = "https://rest.farzain.com/api/joox/info.php?apikey=fDh6y7ZwXJ24eiArhGEJ55HgA&songid=" .$keyword; 
+    $uri = "https://rest.farzain.com/api/joox/info.php?apikey=fDh6y7ZwXJ24eiArhGEJ55HgA&songid=" .$keyword. ""; 
 
     $response = Unirest\Request::get("$uri"); 
+    $json = json_decode($response->raw_body, true);
+    $result = "「Audio Result」\n";
+    $result .= "\n\nClick here ↓↓↓: ";
     $result = $json['audio']['mp3'];
     return $result; 
 }
@@ -1145,7 +1148,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
                 'type' => 'audio',
-                'originalContentUrl' => $result['mp3'],
+                'originalContentUrl' => $result audio['mp3'],
                 'duration' => 1000000,
                 )
             )
