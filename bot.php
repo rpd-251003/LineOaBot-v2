@@ -72,6 +72,17 @@ function coolt($keyword) {
     return $result; 
 }
 #-------------------------[Close]-------------------------#
+#-------------------------[Open]-------------------------#
+function fsgn($keyword) { 
+    $uri = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20171227T171852Z.fda4bd604c7bf41f.f939237fb5f802608e9fdae4c11d9dbdda94a0b5&text=" . $keyword . "&lang=id-id"; 
+ 
+    $response = Unirest\Request::get("$uri"); 
+ 
+    $json = json_decode($response->raw_body, true); 
+    $result .= "https://rest.farzain.com/api/special/fansign/cosplay/cosplay.php?apikey=ppqeuy&text=" .$keyword. "";
+    return $result; 
+}
+#-------------------------[Close]-------------------------#
 function ahli($keyword) {
     $uri = "https://rest.farzain.com/api/ahli.php?name=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
   
@@ -1224,6 +1235,23 @@ if($message['type']=='text') {
 if($message['type']=='text') {
         if ($command == '/cooltext') {
         $result = coolt($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                  'type' => 'image',
+                  'originalContentUrl' => $result,
+                  'previewImageUrl' => $result
+                )
+            )
+        );
+    }
+}
+#-------------------------[Close]-------------------------#
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+        if ($command == '/fs') {
+        $result = fsgn($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
