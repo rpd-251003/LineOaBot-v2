@@ -1763,37 +1763,17 @@ if($message['type']=='text') {
 }
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
-        if ($command == '/linedownload') { 
-     
-        $result = linepost($options);
-        $balas = array( 
-            'replyToken' => $replyToken, 
-            'messages' => array( 
-                array ( 
-                        'type' => 'template', 
-                          'altText' => 'Line Downloader', 
-                          'template' =>  
-                          array ( 
-                            'type' => 'buttons', 
-                            'thumbnailImageUrl' => 'https://www.google.co.id/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiXmsrWob7eAhVFRo8KHUoABQAQjRx6BAgBEAU&url=https%3A%2F%2Fwww.vexels.com%2Fpng-svg%2Fpreview%2F137381%2Fline-icon-logo&psig=AOvVaw0k7oKHr0eQXDQxkwoh3ghI&ust=1541542019776748' 
-                            'imageAspectRatio' => 'rectangle', 
-                            'imageSize' => 'cover', 
-                            'imageBackgroundColor' => '#FFFFFF', 
-                            'title' => 'Line Post Downloader', 
-                            'text' => 'Open In Your Browser', 
-                            'actions' =>  
-                            array ( 
-                              0 =>  
-                              array ( 
-                                'type' => 'uri', 
-                                'label' => 'Click Here', 
-                                'uri' => $result['result'], 
-                              ), 
-                            ), 
-                          ), 
-                        ) 
-            ) 
-        ); 
+      if ($command == '/linedownload') {
+        $result = linepostf($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Open In Your Browser '.$result['result'] '
+                )
+            )
+        );
     }
 }
 #-------------------------[Open]-------------------------#
