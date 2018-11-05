@@ -203,7 +203,7 @@ function audio($keyword) {
     $response = Unirest\Request::get("$uri"); 
     $json = json_decode($response->raw_body, true);
     $result = "「Audio Result」\n";
-    $result .= "\n\nClick here ↓↓↓: ";
+    $result = "\n\nClick here ↓↓↓: ";
     $result = $json['audio']['mp3'];
     return $result; 
 }
