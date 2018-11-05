@@ -118,15 +118,6 @@ function light($keyword) {
 }
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
-function linepostd($keyword) { 
-    $uri = "https://rest.farzain.com/api/special/line.php?id=" .$keyword. "&apikey=ppqeuy"; 
-    $response = Unirest\Request::get("$uri"); 
-    $json = json_decode($response->raw_body, true); 
-    $result .= $json['result'];
-    return $result; 
-}
-#-------------------------[Close]-------------------------#
-#-------------------------[Open]-------------------------#
 function quotes($keyword) {
     $uri = "https://rest.farzain.com/api/motivation.php?apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
     $response = Unirest\Request::get("$uri");
@@ -1759,21 +1750,6 @@ if($message['type']=='text') {
                         ) 
             ) 
         ); 
-    }
-}
-#-------------------------[Open]-------------------------#
-if($message['type']=='text') {
-      if ($command == '/linedownload') {
-        $result = linepostf($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => 'Open In Your Browser '.$result['result'] '
-                )
-            )
-        );
     }
 }
 #-------------------------[Open]-------------------------#
