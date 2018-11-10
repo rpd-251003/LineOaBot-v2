@@ -1783,7 +1783,7 @@ if($message['type']=='text') {
 if ($tmessage['type'] == 'text') {
 	  if ($command == '/bye') { 
     $text = "Terimakasih Telah invite aku ke group ini silahkan ketik Help untuk lihat command aku :)";
-    $response = $bot->leaveGroup
+    $response->leaveGroup
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
         if ($command == '/lightgrafitti') { 
