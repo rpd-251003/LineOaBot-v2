@@ -61,6 +61,21 @@ function img($keyword) {
     $result = $json['gambar'];
     return $result;
 }
+function juks($keyword) {
+    $uri = "https://rest.farzain.com/api/joox/info.php?apikey=ppqeuy&songid=" . $keyword . "";
+  
+    $response = Unirest\Request::get("$uri");
+  
+    $json = json_decode($response->raw_body, true);
+    $parsed = array();
+    $parsed['a1'] = $json['info']['judul'];
+    $parsed['a2'] = $json['info']['penyanyi'];
+    $parsed['a3'] = $json['audio']['mp3'];
+    $parsed['a4'] = $json['gambar'];
+    $parsed['a5'] = $json['lirik'];
+    $parsed['a6'] = $json['info']['album']
+    return $parsed;
+}
 #-------------------------[Open]-------------------------#
 function coolt($keyword) { 
     $uri = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20171227T171852Z.fda4bd604c7bf41f.f939237fb5f802608e9fdae4c11d9dbdda94a0b5&text=" . $keyword . "&lang=id-id"; 
@@ -487,6 +502,45 @@ function instagram($keyword) {
     return $parsed;
 }
 #-------------------------[Open]-------------------------#
+#-------------------------[Open]-------------------------#  
+if($message['type']=='text') {
+    if ($command == '/joox') { 
+        
+        $result = juks($options);
+        $altText2 = "Judul : " . $result['a1'];
+        $altText2 .= "\nPenyanyi :" . $result['a2'];
+        $altText2 .= "\nAlbum :" . $result['a6'];
+        $balas = array( 
+            'replyToken' => $replyToken, 
+            'messages' => array( 
+                array ( 
+                        'type' => 'template', 
+                          'altText' => 'Joox Result, 
+                          'template' =>  
+                          array ( 
+                            'type' => 'buttons', 
+                            'thumbnailImageUrl' => $result['a4'], 
+                            'imageAspectRatio' => 'rectangle', 
+                            'imageSize' => 'cover', 
+                            'imageBackgroundColor' => '#FFFFFF', 
+                            'title' => $result['a1'], 
+                            'text' => $altText2, 
+                            'actions' =>  
+                            array ( 
+                              0 =>  
+                              array ( 
+                                'type' => 'uri', 
+                                'label' => 'Audio', 
+                                'uri' => $result['a3'],
+                              ), 
+                            ), 
+                          ), 
+                        ) 
+            ) 
+        ); 
+    }
+}
+#-------------------------[Close]-------------------------#
 function qibla($keyword) { 
     $uri = "https://time.siswadi.com/qibla/" . $keyword; 
  
