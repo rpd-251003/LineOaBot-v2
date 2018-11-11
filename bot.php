@@ -502,44 +502,6 @@ function instagram($keyword) {
     return $parsed;
 }
 #-------------------------[Open]-------------------------#
-#-------------------------[Open]-------------------------#  
-if($message['type']=='text') {
-    if ($command == '/joox') { 
-        
-        $result = juks($options);
-        $altText2 = "Judul : " . $result['a1'];
-        $altText2 .= "\nPenyanyi :" . $result['a2'];
-        $altText2 .= "\nAlbum :" . $result['a6'];
-        $balas = array( 
-            'replyToken' => $replyToken, 
-            'messages' => array( 
-                array ( 
-                        'type' => 'template', 
-                          'altText' => 'Joox Result, 
-                          'template' =>  
-                          array ( 
-                            'type' => 'buttons', 
-                            'thumbnailImageUrl' => $result['a4'], 
-                            'imageAspectRatio' => 'rectangle', 
-                            'imageSize' => 'cover', 
-                            'imageBackgroundColor' => '#FFFFFF', 
-                            'title' => $result['a1'], 
-                            'text' => $altText2, 
-                            'actions' =>  
-                            array ( 
-                              0 =>  
-                              array ( 
-                                'type' => 'uri', 
-                                'label' => 'Audio', 
-                                'uri' => $result['a3'],
-                              ), 
-                            ), 
-                          ), 
-                        ) 
-            ) 
-        ); 
-    }
-}
 #-------------------------[Close]-------------------------#
 function qibla($keyword) { 
     $uri = "https://time.siswadi.com/qibla/" . $keyword; 
@@ -1000,6 +962,45 @@ if($message['type']=='text') {
 )
             )
         );
+    }
+}
+#-------------------------[Close]-------------------------#
+#-------------------------[Open]-------------------------#  
+if($message['type']=='text') {
+    if ($command == '/jooxsong') { 
+        
+        $result = juks($options);
+        $altText2 = "Judul : " . $result['a1'];
+        $altText2 .= "\nPenyanyi :" . $result['a2'];
+        $altText2 .= "\nAlbum :" . $result['a6'];
+        $balas = array( 
+            'replyToken' => $replyToken, 
+            'messages' => array( 
+                array ( 
+                        'type' => 'template', 
+                          'altText' => 'Joox Result, 
+                          'template' =>  
+                          array ( 
+                            'type' => 'buttons', 
+                            'thumbnailImageUrl' => $result['a4'], 
+                            'imageAspectRatio' => 'rectangle', 
+                            'imageSize' => 'cover', 
+                            'imageBackgroundColor' => '#FFFFFF', 
+                            'title' => $result['a1'], 
+                            'text' => $altText2, 
+                            'actions' =>  
+                            array ( 
+                              0 =>  
+                              array ( 
+                                'type' => 'uri', 
+                                'label' => 'Audio', 
+                                'uri' => $result['a3'],
+                              ), 
+                            ), 
+                          ), 
+                        ) 
+            ) 
+        ); 
     }
 }
 #-------------------------[Close]-------------------------#
@@ -1689,7 +1690,7 @@ if($message['type']=='text') {
                             array (
                               'type' => 'message',
                               'label' => 'Music',
-                              'text' => 'Contoh: /joox asal kau bahagia',
+                              'text' => 'Contoh: /jooxsong asal kau bahagia',
                             ),
                           ),
                           7 => 
