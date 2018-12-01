@@ -1816,6 +1816,103 @@ if($message['type']=='text') {
         ); 
     }
 }
+#KALO GA WORK HAPUS DARI SINI#
+if(
+          $event['source']['type'] == 'group' or
+          $event['source']['type'] == 'room'
+        ){
+          if($event['source']['userId']){
+            if ($a[0]=="/tambah") {
+              $stored = file_get_contents('http://farkhan.000webhostapp.com/tae/storeData.php?groupid='.$event['source']['groupId'].'&nama_jadwal='.urlencode($a[1]).'&isi_jadwal='.urlencode($a[2]));
+              $obj = json_decode($stored, TRUE);
+              $result = $bot->replyText($event['replyToken'], $obj['message']);
+            }
+            else if ($a[0]=="/semua") {
+              $stored = file_get_contents('http://farkhan.000webhostapp.com/tae/GetData.php?groupid='.$event['source']['groupId']);
+              $datanya = json_decode($stored, TRUE);
+              $hasilnya="Note Yang Disimpan";
+              if (is_array($datanya) || is_object($datanyas)) {
+                foreach ($datanya as $datanyas) {
+                  echo $datanyas['jadwal'];
+                  foreach($datanyas as $datanyass)
+                  {
+                    $hasilnya=$hasilnya."\n".$datanyass['nama_jadwal'];
+                  }
+                }
+              }
+              $result = $bot->replyText($event['replyToken'],$hasilnya);
+            }else if ($a[0]=="/detail") {
+              $stored = file_get_contents('http://farkhan.000webhostapp.com/tae/GetData.php?groupid='.$event['source']['groupId'].'&nama_jadwal='.urlencode($a[1]));
+              $datanya = json_decode($stored, TRUE);
+              $hasilnya="Detail Note ".$a[1];
+              if (is_array($datanya) || is_object($datanyas)) {
+                foreach ($datanya as $datanyas) {
+                  echo $datanyas['jadwal'];
+                  foreach($datanyas as $datanyass)
+                  {
+                    $hasilnya=$hasilnya."\n".$datanyass['detail'];
+                  }
+                }
+              }
+              $result = $bot->replyText($event['replyToken'],$hasilnya);
+            }else if ($a[0]=="/hapus") {
+              $stored = file_get_contents('http://farkhan.000webhostapp.com/tae/deleteNote.php?groupid='.$event['source']['groupId'].'&nama_jadwal='.urlencode($a[1]));
+              $obj = json_decode($stored, TRUE);
+              $result = $bot->replyText($event['replyToken'], $obj['message']);
+            }
+            return $res->withJson($result->getJSONDecodedBody(), $event['message']['text'].$result->getHTTPStatus());
+          } else {
+            if (substr($event['message']['text'],0,2)=='IP' & strlen($event['message']['text'])==18){
+              $result = $bot->replyText($event['replyToken'], 'Add terlebih dahulu');
+            }
+            return $res->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+          }
+        } else {
+          if($event['message']['type'] == 'text'){
+            if ($a[0]=="/tambah") {
+              $stored = file_get_contents('http://farkhan.000webhostapp.com/tae/storeData.php?groupid='.$event['source']['userId'].'&nama_jadwal='.urlencode($a[1]).'&isi_jadwal='.urlencode($a[2]));
+              $obj = json_decode($stored, TRUE);
+              $result = $bot->replyText($event['replyToken'], $obj['message']);
+            }
+            else if ($a[0]=="/semua") {
+              $stored = file_get_contents('http://farkhan.000webhostapp.com/tae/GetData.php?groupid='.$event['source']['userId']);
+              $datanya = json_decode($stored, TRUE);
+              $hasilnya="Note Yang Disimpan";
+              if (is_array($datanya) || is_object($datanyas)) {
+                foreach ($datanya as $datanyas) {
+                  echo $datanyas['jadwal'];
+                  foreach($datanyas as $datanyass)
+                  {
+                    $hasilnya=$hasilnya."\n".$datanyass['nama_jadwal'];
+                  }
+                }
+              }
+              $result = $bot->replyText($event['replyToken'],$hasilnya);
+            }else if ($a[0]=="/detail") {
+              $stored = file_get_contents('http://farkhan.000webhostapp.com/tae/GetData.php?groupid='.$event['source']['userId'].'&nama_jadwal='.urlencode($a[1]));
+              $datanya = json_decode($stored, TRUE);
+              $hasilnya="Detail Note ".$a[1];
+              if (is_array($datanya) || is_object($datanyas)) {
+                foreach ($datanya as $datanyas) {
+                  echo $datanyas['jadwal'];
+                  foreach($datanyas as $datanyass)
+                  {
+                    $hasilnya=$hasilnya."\n".$datanyass['detail'];
+                  }
+                }
+              }
+              $result = $bot->replyText($event['replyToken'],$hasilnya);
+            }else if ($a[0]=="/hapus") {
+              $stored = file_get_contents('http://farkhan.000webhostapp.com/tae/deleteNote.php?groupid='.$event['source']['userId'].'&nama_jadwal='.urlencode($a[1]));
+              $obj = json_decode($stored, TRUE);
+              $result = $bot->replyText($event['replyToken'], $obj['message']);
+            }
+          }
+        }
+      }
+    }
+  }
+#SAMPE SINI###########
 if (isset($balas)) {
     $result = json_encode($balas);
 //$result = ob_get_clean();
