@@ -1825,7 +1825,7 @@ if(
             if ($a[0]=="/tambah") {
               $stored = file_get_contents('http://farkhan.000webhostapp.com/tae/storeData.php?groupid='.$event['source']['groupId'].'&nama_jadwal='.urlencode($a[1]).'&isi_jadwal='.urlencode($a[2]));
               $obj = json_decode($stored, TRUE);
-              $result = $bot->replyText($event['replyToken'], $obj['message']);
+              $result = replyText($event['replyToken'], $obj['message']);
             }
             else if ($a[0]=="/semua") {
               $stored = file_get_contents('http://farkhan.000webhostapp.com/tae/GetData.php?groupid='.$event['source']['groupId']);
@@ -1840,7 +1840,7 @@ if(
                   }
                 }
               }
-              $result = $bot->replyText($event['replyToken'],$hasilnya);
+              $result = replyText($event['replyToken'],$hasilnya);
             }else if ($a[0]=="/detail") {
               $stored = file_get_contents('http://farkhan.000webhostapp.com/tae/GetData.php?groupid='.$event['source']['groupId'].'&nama_jadwal='.urlencode($a[1]));
               $datanya = json_decode($stored, TRUE);
@@ -1854,7 +1854,7 @@ if(
                   }
                 }
               }
-              $result = $bot->replyText($event['replyToken'],$hasilnya);
+              $result = replyText($event['replyToken'],$hasilnya);
             }else if ($a[0]=="/hapus") {
               $stored = file_get_contents('http://farkhan.000webhostapp.com/tae/deleteNote.php?groupid='.$event['source']['groupId'].'&nama_jadwal='.urlencode($a[1]));
               $obj = json_decode($stored, TRUE);
@@ -1887,7 +1887,7 @@ if(
                   }
                 }
               }
-              $result = $bot->replyText($event['replyToken'],$hasilnya);
+              $result = replyText($event['replyToken'],$hasilnya);
             }else if ($a[0]=="/detail") {
               $stored = file_get_contents('http://farkhan.000webhostapp.com/tae/GetData.php?groupid='.$event['source']['userId'].'&nama_jadwal='.urlencode($a[1]));
               $datanya = json_decode($stored, TRUE);
@@ -1901,7 +1901,7 @@ if(
                   }
                 }
               }
-              $result = $bot->replyText($event['replyToken'],$hasilnya);
+              $result = replyText($event['replyToken'],$hasilnya);
             }else if ($a[0]=="/hapus") {
               $stored = file_get_contents('http://farkhan.000webhostapp.com/tae/deleteNote.php?groupid='.$event['source']['userId'].'&nama_jadwal='.urlencode($a[1]));
               $obj = json_decode($stored, TRUE);
