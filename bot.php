@@ -937,6 +937,12 @@ if($message['type']=='text') {
                     'label' => 'Play',
                     'uri' => $result['e1'],
                   ),
+		 1 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Play',
+                    'text' => 'play ' .$result['e1'],
+                  ),
                 ),
               ),
               1 => 
@@ -951,6 +957,12 @@ if($message['type']=='text') {
                     'type' => 'uri',
                     'label' => 'Play',
                     'uri' => $result['e2'],
+                  ),
+		1 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Play',
+                    'text' => 'play ' .$result['e2'],
                   ),
                 ),
               ),  
@@ -967,6 +979,12 @@ if($message['type']=='text') {
                     'label' => 'Play',
                     'uri' => $result['e3'],
                   ),
+			1 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Play',
+                    'text' => 'play ' .$result['e3'],
+                  ),
                 ),
               ),            
               3 => 
@@ -982,6 +1000,12 @@ if($message['type']=='text') {
                     'label' => 'Play',
                     'uri' => $result['e4'],
                   ),
+			1 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Play',
+                    'text' => 'play ' .$result['e4'],
+                  ),
                 ),
               ),          
               4 => 
@@ -996,6 +1020,12 @@ if($message['type']=='text') {
                     'type' => 'uri',
                     'label' => 'Play',
                     'uri' => $result['e5'],
+                  ),
+		1 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Play',
+                    'text' => 'play ' .$result['e5'],
                   ),
                 ),
               ),            
