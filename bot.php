@@ -998,7 +998,7 @@ if($message['type']=='text') {
     }
 }
 if($message['type']=='text') {
-if ($command == '/jam') { 
+if ($command == '/jam1') { 
      
         $result = wib($options); 
         $result2 = wit($options); 
