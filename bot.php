@@ -2,8 +2,8 @@
 <?php
 require_once('./line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
-$channelAccessToken = 'YrgnN4khlxA7rZAXGOvxrzBPmnM+o6GcTokd7uoulU53wPH9LBa9Fwb4SVEcl9m0aqQ7WJdbF3SC1o4C7Bhig20trqkZNIwlx1AtaKpNOBQjF5bPMNRzWCutNoAmHRqUVujMfWbrOGsZkVxrePzr9QdB04t89/1O/w1cDnyilFU='; //sesuaikan 
-$channelSecret = '2f7da54862ef576d1a568fa342a19b91';//sesuaikan
+$channelAccessToken = 'BRoAPAlLNgFt97Mzxlwe/V7J98+K8fB3L3S9SWJPKHxjCe+MDWv0WfBJyNZrB57jjUJl2sHKiC7qkRzlqHkdRA/u81p1LDTrl7hmwamacbkLBIWtnJC14HxbUWipwnfYGpv25BF+11bmn68Vw6RfGgdB04t89/1O/w1cDnyilFU='; //sesuaikan 
+$channelSecret = '5417cdfeb36fa34b2775cc17f9e0e628';//sesuaikan
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 $userId     = $client->parseEvents()[0]['source']['userId'];
 $groupId    = $client->parseEvents()[0]['source']['groupId'];
@@ -539,33 +539,11 @@ function qibla($keyword) {
 }
 //show menu, saat join dan command,menu
 if ($command == '/menu') {
-    $text .= "「Keyword GabzBot~」\n\n";
+    $text .= "「Keyword ~」\n\n";
     $text .= "- Help\n";
-    $text .= "- /jam \n";
-    $text .= "- /quotes \n";
-    $text .= "- /say [teks] \n";
-    $text .= "- /definition [teks] \n";
-    $text .= "- /cooltext [teks] \n";
-    $text .= "- /shalat [lokasi] \n";
-    $text .= "- /qiblat [lokasi] \n";
-    $text .= "- /film [teks] \n";
-    $text .= "- /qr [teks] \n";
-    $text .= "- /neon [teks] \n";
-    $text .= "- /ahli [nama] \n";
-    $text .= "- /arti-nama [nama] \n";
-    $text .= "- /lightgrafitti [teks] \n";
-    $text .= "- /wallgrafitti [teks] \n";
-    $text .= "- /film-syn [Judul] \n";
-    $text .= "- /lirik [Judul] \n";
-    $text .= "- /wikipedia [Judul] \n";
-  $text .= "- /brainly [pertanyaan] \n";
-  $text .= "- /youtube [Judul] \n";
-    $text .= "- /zodiak [tanggal lahir] \n";
-        $text .= "- /instagram [username] \n";
-        $text .= "- /jadwaltv [stasiun] \n";
-	$text .= "- /anime [nama] \n";	
-    $text .= "- /creator \n";
-    $text .= "\n「Done~ V132」";
+    $text .= "- /music judul\n";
+ $text .= "- /lirik judul\n";
+    $text .= "\n「Done ~」";
     $balas = array(
         'replyToken' => $replyToken,
         'messages' => array(
@@ -768,149 +746,6 @@ if($message['type']=='text') {
 }
 }
 if($message['type']=='text') {
-      if ($command == '/mmks') {
-        $result = joox2($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-        array (
-          'type' => 'template',
-          'altText' => 'Result Youtube',
-          'template' => 
-          array (
-            'type' => 'carousel',
-            'columns' => 
-            array (
-              0 => 
-              array (
-                'thumbnailImageUrl' => $result['c1'],
-                'imageBackgroundColor' => '#FFFFFF',
-                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b1'], 0, 47)).'...',
-                'actions' => 
-                array (
-                  0 => 
-                  array (
-                    'type' => 'uri',
-                    'label' => 'Youtube',
-                    'uri' => 'https://youtu.be/'.$result['a1'],
-                  ),
-                ),
-              ),
-              1 => 
-              array (
-                'thumbnailImageUrl' => $result['c2'],
-                'imageBackgroundColor' => '#000000',
-                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b2'], 0, 47)).'...',
-                'actions' => 
-                array (
-                  0 => 
-                  array (
-                    'type' => 'uri',
-                    'label' => 'Youtube',
-                    'uri' => 'https://youtu.be/'.$result['a2'],
-                  ),
-                ),
-              ),  
-              2 => 
-              array (
-                'thumbnailImageUrl' => $result['c3'],
-                'imageBackgroundColor' => '#FFFFFF',
-                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b3'], 0, 47)).'...',
-                'actions' => 
-                array (
-                  0 => 
-                  array (
-                    'type' => 'uri',
-                    'label' => 'Youtube',
-                    'uri' => 'https://youtu.be/'.$result['a3'],
-                  ),
-                ),
-              ),            
-              3 => 
-              array (
-                'thumbnailImageUrl' => $result['c4'],
-                'imageBackgroundColor' => '#FFFFFF',
-                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b4'], 0, 47)).'...',
-                'actions' => 
-                array (
-                  0 => 
-                  array (
-                    'type' => 'uri',
-                    'label' => 'Youtube',
-                    'uri' => 'https://youtu.be/'.$result['a4'],
-                  ),
-                ),
-              ),
-              4 => 
-              array (
-                'thumbnailImageUrl' => $result['c5'],
-                'imageBackgroundColor' => '#FFFFFF',
-                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b5'], 0, 47)).'...',
-                'actions' => 
-                array (
-                  0 => 
-                  array (
-                    'type' => 'uri',
-                    'label' => 'Youtube',
-                    'uri' => 'https://youtu.be/'.$result['a5'],
-                  ),
-                ),
-              ),
-              5 => 
-              array (
-                'thumbnailImageUrl' => $result['c6'],
-                'imageBackgroundColor' => '#FFFFFF',
-                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b6'], 0, 47)).'...',
-                'actions' => 
-                array (
-                  0 => 
-                  array (
-                    'type' => 'uri',
-                    'label' => 'Youtube',
-                    'uri' => 'https://youtu.be/'.$result['a6'],
-                  ),
-                ),
-              ),            
-              6 => 
-              array (
-                'thumbnailImageUrl' => $result['c7'],
-                'imageBackgroundColor' => '#FFFFFF',
-                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b7'], 0, 47)).'...',
-                'actions' => 
-                array (
-                  0 => 
-                  array (
-                    'type' => 'uri',
-                    'label' => 'Youtube',
-                    'uri' => 'https://youtu.be/'.$result['a7'],
-                  ),
-                ),
-              ),            
-              7 => 
-              array (
-                'thumbnailImageUrl' => $result['c8'],
-                'imageBackgroundColor' => '#FFFFFF',
-                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b8'], 0, 47)).'...',
-                'actions' => 
-                array (
-                  0 => 
-                  array (
-                    'type' => 'uri',
-                    'label' => 'Youtube',
-                    'uri' => 'https://youtu.be/'.$result['a8'],
-                  ),
-                ),
-              ),            
-            ),
-            'imageAspectRatio' => 'rectangle',
-            'imageSize' => 'cover',
-          ),
-        )   
-            )
-        );
-}
-}
-if($message['type']=='text') {
       if ($command == '/music') {
         $result = joox2($options);
         $balas = array(
@@ -934,13 +769,13 @@ if($message['type']=='text') {
                   0 => 
                   array (
                     'type' => 'uri',
-                    'label' => 'Download',
+                    'label' => 'Stream 1',
                     'uri' => $result['e1'],
                   ),
 		 1 => 
                   array (
                     'type' => 'message',
-                    'label' => 'Play',
+                    'label' => 'Stream 2',
                     'text' => 'play ' .$result['e1'],
                   ),
                 ),
@@ -955,13 +790,13 @@ if($message['type']=='text') {
                   0 => 
                   array (
                     'type' => 'uri',
-                    'label' => 'Download',
+                    'label' => 'Stream 1',
                     'uri' => $result['e2'],
                   ),
 		1 => 
                   array (
                     'type' => 'message',
-                    'label' => 'Play',
+                    'label' => 'Stream 2',
                     'text' => 'play ' .$result['e2'],
                   ),
                 ),
@@ -976,13 +811,13 @@ if($message['type']=='text') {
                   0 => 
                   array (
                     'type' => 'uri',
-                    'label' => 'Download',
+                    'label' => 'Stream 1',
                     'uri' => $result['e3'],
                   ),
 			1 => 
                   array (
                     'type' => 'message',
-                    'label' => 'Play',
+                    'label' => 'Stream 2',
                     'text' => 'play ' .$result['e3'],
                   ),
                 ),
@@ -997,13 +832,13 @@ if($message['type']=='text') {
                   0 => 
                   array (
                     'type' => 'uri',
-                    'label' => 'Download',
+                    'label' => 'Stream 1',
                     'uri' => $result['e4'],
                   ),
 			1 => 
                   array (
                     'type' => 'message',
-                    'label' => 'Play',
+                    'label' => 'Stream 2',
                     'text' => 'play ' .$result['e4'],
                   ),
                 ),
@@ -1018,13 +853,13 @@ if($message['type']=='text') {
                   0 => 
                   array (
                     'type' => 'uri',
-                    'label' => 'Download',
+                    'label' => 'Stream 1',
                     'uri' => $result['e5'],
                   ),
 		1 => 
                   array (
                     'type' => 'message',
-                    'label' => 'Play',
+                    'label' => 'Stream 2',
                     'text' => 'play ' .$result['e5'],
                   ),
                 ),
@@ -1945,102 +1780,22 @@ if($message['type']=='text') {
                         array (
                           0 => 
                           array (
-                            'imageUrl' => 'https://is5-ssl.mzstatic.com/image/thumb/Purple118/v4/64/c9/6f/64c96f0c-0202-09f6-78b5-1ef915086215/Prod-1x_U007emarketing-85-220-0-5.png/246x0w.jpg',
-                            'action' => 
-                            array (
-                              'type' => 'message',
-                              'label' => 'Instagram',
-                              'text' => 'Contoh: /instagram gabz_78',
-                            ),
-                          ),
-                          1 => 
-                          array (
-                            'imageUrl' => 'https://rest.farzain.com/api/photofunia/neon_sign.php?text=GabzBot&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA',
-                            'action' => 
-                            array (
-                              'type' => 'message',
-                              'label' => 'Neon Teks',
-                              'text' => 'Contoh: /neon GabzBot',
-                            ),
-                          ),
-                          2 => 
-                          array (
-                            'imageUrl' => 'https://pbs.twimg.com/profile_images/907880885848088578/maJDkfTn_400x400.jpg',
-                            'action' => 
-                            array (
-                              'type' => 'message',
-                              'label' => 'TTS',
-                              'text' => 'Contoh: /say Halo',
-                            ),
-                          ),
-                          3 => 
-                          array (
-                            'imageUrl' => 'https://bestanimations.com/HomeOffice/Clocks/clock-animated-gif-5.gif',
-                            'action' => 
-                            array (
-                              'type' => 'message',
-                              'label' => 'Jam Indo',
-                              'text' => '/jam',
-                            ),
-                          ),
-                          4 => 
-                          array (
-                            'imageUrl' => 'https://bpptik.kominfo.go.id/wp-content/uploads/2016/09/Programmer.jpg',
-                            'action' => 
-                            array (
-                              'type' => 'message',
-                              'label' => 'Creator',
-                              'text' => '/creator',
-                            ),
-                          ),
-                          5 => 
-                          array (
-                            'imageUrl' => 'https://rest.farzain.com/api/special/fansign/cosplay/cosplay.php?apikey=ppqeuy&text=GabzBot',
-                            'action' => 
-                            array (
-                              'type' => 'message',
-                              'label' => 'Fansign',
-                              'text' => 'Contoh: /fs GabzBot',
-                            ),
-                          ),
-                          6 => 
-                          array (
                             'imageUrl' => 'https://www.dailygizmo.tv/wp-content/uploads/2016/04/Joox-Logo-1440x937.jpg',
                             'action' => 
                             array (
                               'type' => 'message',
                               'label' => 'Music',
-                              'text' => 'Contoh: /joox in my feelings',
+                              'text' => 'Contoh: /music ran',
                             ),
                           ),
-                          7 => 
-                          array (
-                            'imageUrl' => 'https://www.kiblat.net/files/2018/02/shalat.jpg',
-                            'action' => 
-                            array (
-                              'type' => 'message',
-                              'label' => 'Shalat',
-                              'text' => 'Contoh: /shalat Bandung',
-                            ),
-                          ),
-                          8 => 
-                          array (
-                            'imageUrl' => 'https://us.123rf.com/450wm/nulinukas/nulinukas1202/nulinukas120200019/12251019-boy-watching-tv-cartoon.jpg?ver=6',
-                            'action' => 
-                            array (
-                              'type' => 'message',
-                              'label' => 'Jadwal Tv',
-                              'text' => 'Contoh: /jadwaltv rcti',
-                            ),
-                          ),
-                          9 => 
+                          1 => 
                           array (
                             'imageUrl' => 'https://pa1.narvii.com/6342/76ec050c2d184bbe728f7cedd48aadc29250b325_hq.gif',
                             'action' => 
                             array (
                               'type' => 'message',
-                              'label' => 'More Command',
-                              'text' => '/menu',
+                              'label' => 'Lirik',
+                              'text' => 'Contoh : /lirik akad',
                             ),
                           ),
                         ),
