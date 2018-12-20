@@ -55,6 +55,13 @@ function lirik($keyword) {
     $result .= "\n「Done~」";
     return $result;
 }
+function joox1($keyword) { 
+    $uri = "https://arsybai.herokuapp.com/rest/joox?apikey=rhnprmd&query=" . $keyword; 
+    $response = Unirest\Request::get("$uri"); 
+    $json = json_decode($response->raw_body, true);
+    $result =  $json['result']['0']['mp3']; 
+    return $result; 
+}
 function img($keyword) {
     $uri = "https://rest.farzain.com/api/joox.php?id=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
     $response = Unirest\Request::get("$uri");
@@ -732,6 +739,39 @@ if($message['type']=='text') {
 if($message['type']=='text') {
         if ($command == '/quotes') {
         $result = quotes($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+  'type' => 'flex',
+  'altText' => 'Result Quotes',
+  'contents' => 
+  array (
+    'type' => 'bubble',
+    'body' => 
+    array (
+      'type' => 'box',
+      'layout' => 'vertical',
+      'contents' => 
+      array (
+        0 => 
+        array (
+          'type' => 'text',
+          'text' => $result,
+          'wrap' => True,
+        ),
+      ),
+    ),
+  ),
+)
+            )
+        );
+    }
+}   
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+        if ($command == '/test3') {
+        $result = joox1($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
