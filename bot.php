@@ -768,6 +768,149 @@ if($message['type']=='text') {
 }
 }
 if($message['type']=='text') {
+      if ($command == '/mmks') {
+        $result = joox2($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+        array (
+          'type' => 'template',
+          'altText' => 'Result Youtube',
+          'template' => 
+          array (
+            'type' => 'carousel',
+            'columns' => 
+            array (
+              0 => 
+              array (
+                'thumbnailImageUrl' => $result['c1'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b1'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => 'https://youtu.be/'.$result['a1'],
+                  ),
+                ),
+              ),
+              1 => 
+              array (
+                'thumbnailImageUrl' => $result['c2'],
+                'imageBackgroundColor' => '#000000',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b2'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => 'https://youtu.be/'.$result['a2'],
+                  ),
+                ),
+              ),  
+              2 => 
+              array (
+                'thumbnailImageUrl' => $result['c3'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b3'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => 'https://youtu.be/'.$result['a3'],
+                  ),
+                ),
+              ),            
+              3 => 
+              array (
+                'thumbnailImageUrl' => $result['c4'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b4'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => 'https://youtu.be/'.$result['a4'],
+                  ),
+                ),
+              ),
+              4 => 
+              array (
+                'thumbnailImageUrl' => $result['c5'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b5'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => 'https://youtu.be/'.$result['a5'],
+                  ),
+                ),
+              ),
+              5 => 
+              array (
+                'thumbnailImageUrl' => $result['c6'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b6'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => 'https://youtu.be/'.$result['a6'],
+                  ),
+                ),
+              ),            
+              6 => 
+              array (
+                'thumbnailImageUrl' => $result['c7'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b7'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => 'https://youtu.be/'.$result['a7'],
+                  ),
+                ),
+              ),            
+              7 => 
+              array (
+                'thumbnailImageUrl' => $result['c8'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['b8'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'uri',
+                    'label' => 'Youtube',
+                    'uri' => 'https://youtu.be/'.$result['a8'],
+                  ),
+                ),
+              ),            
+            ),
+            'imageAspectRatio' => 'rectangle',
+            'imageSize' => 'cover',
+          ),
+        )   
+            )
+        );
+}
+}
+if($message['type']=='text') {
       if ($command == '/music') {
         $result = joox2($options);
         $balas = array(
