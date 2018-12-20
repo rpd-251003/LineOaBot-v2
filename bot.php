@@ -935,7 +935,7 @@ if($message['type']=='text') {
                   array (
                     'type' => 'uri',
                     'label' => 'Play',
-                    'uri' => 'play '.$result['e1'],
+                    'uri' => $result['e1'],
                   ),
                 ),
               ),
@@ -950,7 +950,7 @@ if($message['type']=='text') {
                   array (
                     'type' => 'uri',
                     'label' => 'Play',
-                    'uri' => 'play '.$result['e2'],
+                    'uri' => $result['e2'],
                   ),
                 ),
               ),  
@@ -965,7 +965,7 @@ if($message['type']=='text') {
                   array (
                     'type' => 'uri',
                     'label' => 'Play',
-                    'uri' => 'play '.$result['e3'],
+                    'uri' => $result['e3'],
                   ),
                 ),
               ),            
@@ -980,7 +980,7 @@ if($message['type']=='text') {
                   array (
                     'type' => 'uri',
                     'label' => 'Play',
-                    'uri' => 'play '.$result['e4'],
+                    'uri' => $result['e4'],
                   ),
                 ),
               ),          
@@ -995,7 +995,7 @@ if($message['type']=='text') {
                   array (
                     'type' => 'uri',
                     'label' => 'Play',
-                    'uri' => 'play '.$result['e5'],
+                    'uri' => $result['e5'],
                   ),
                 ),
               ),            
