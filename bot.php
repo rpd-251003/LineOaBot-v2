@@ -1504,7 +1504,7 @@ if($message['type']=='text') {
             'messages' => array( 
                 array ( 
                         'type' => 'template', 
-                          'altText' => 'About Creator GabzBot', 
+                          'altText' => 'About Creator JooxBot', 
                           'template' =>  
                           array ( 
                             'type' => 'buttons', 
@@ -1512,15 +1512,15 @@ if($message['type']=='text') {
                             'imageAspectRatio' => 'rectangle', 
                             'imageSize' => 'cover', 
                             'imageBackgroundColor' => '#FFFFFF', 
-                            'title' => 'Gabriel S.', 
-                            'text' => 'Creator GabzBot', 
+                            'title' => 'Ubed.', 
+                            'text' => 'Creator JooxBot', 
                             'actions' =>  
                             array ( 
                               0 =>  
                               array ( 
                                 'type' => 'uri', 
                                 'label' => 'Contact', 
-                                'uri' => 'https://line.me/ti/p/~gabz78', 
+                                'uri' => 'https://line.me/ti/p/~@scf6148e', 
                               ), 
                             ), 
                           ), 
