@@ -565,7 +565,7 @@ if ($command == '/menu') {
         $text .= "- /jadwaltv [stasiun] \n";
 	$text .= "- /anime [nama] \n";	
     $text .= "- /creator \n";
-    $text .= "\n「Done~」";
+    $text .= "\n「Done~ V132」";
     $balas = array(
         'replyToken' => $replyToken,
         'messages' => array(
@@ -790,7 +790,7 @@ if($message['type']=='text') {
                 array (
                   0 => 
                   array (
-                    'type' => 'message',
+                    'type' => 'uri',
                     'label' => 'Play',
                     'uri' => 'play '.$result['e1'],
                   ),
@@ -805,7 +805,7 @@ if($message['type']=='text') {
                 array (
                   0 => 
                   array (
-                    'type' => 'message',
+                    'type' => 'uri',
                     'label' => 'Play',
                     'uri' => 'play '.$result['e2'],
                   ),
@@ -820,7 +820,7 @@ if($message['type']=='text') {
                 array (
                   0 => 
                   array (
-                    'type' => 'message',
+                    'type' => 'uri',
                     'label' => 'Play',
                     'uri' => 'play '.$result['e3'],
                   ),
@@ -835,7 +835,7 @@ if($message['type']=='text') {
                 array (
                   0 => 
                   array (
-                    'type' => 'message',
+                    'type' => 'uri',
                     'label' => 'Play',
                     'uri' => 'play '.$result['e4'],
                   ),
@@ -850,7 +850,7 @@ if($message['type']=='text') {
                 array (
                   0 => 
                   array (
-                    'type' => 'message',
+                    'type' => 'uri',
                     'label' => 'Play',
                     'uri' => 'play '.$result['e5'],
                   ),
