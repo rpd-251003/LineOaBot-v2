@@ -735,6 +735,21 @@ if($message['type']=='text') {
         );
 }
 }
+if($message['type']=='text') {
+    if ($command == '/music') {
+        $result = joox1($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                'type' => 'audio',
+                'originalContentUrl' => $result,
+                'duration' => 10000,
+                )
+            )
+        );
+}
+}
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
         if ($command == '/quotes') {
