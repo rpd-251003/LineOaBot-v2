@@ -59,7 +59,7 @@ function joox1($keyword) {
     $uri = "https://arsybai.herokuapp.com/rest/joox?apikey=rhnprmd&query=" . $keyword; 
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);
-    $result =  $json['result']['1']['mp3']; 
+    $result =  $json['result']['0']['mp3']; 
     return $result; 
 }
 function img($keyword) {
