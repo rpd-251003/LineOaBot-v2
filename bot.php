@@ -125,6 +125,10 @@ function wallgrafitti($keyword) {
     $result .= "https://rest.farzain.com/api/photofunia/graffiti_wall.php?text1=" . $keyword . "&text2=grafitti&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
     return $result; 
 }
+function playm($keyword) { 
+    $result = $keyword;
+    return $result; 
+}
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
 function light($keyword) { 
@@ -345,6 +349,34 @@ $post_data = array(
 );
 $api = json_decode(connect($api_url, $post_data));
 print_r($api);
+}
+function joox2($keyword) {
+    $uri = "https://arsybai.herokuapp.com/rest/joox?apikey=rhnprmd&query=" . $keyword;
+  
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed = array();
+    $parsed['a1'] = $json['result']['0']['title'];
+    $parsed['b1'] = $json['result']['0']['singer'];
+    $parsed['c1'] = $json['result']['0']['img'];
+    $parsed['e1'] = $json['result']['0']['mp3'];
+    $parsed['a2'] = $json['result']['1']['title'];
+    $parsed['b2'] = $json['result']['1']['singer'];
+    $parsed['c2'] = $json['result']['1']['img'];
+    $parsed['e2'] = $json['result']['1']['mp3'];
+    $parsed['a3'] = $json['result']['2']['title'];
+    $parsed['b3'] = $json['result']['2']['singer'];
+    $parsed['c3'] = $json['result']['2']['img'];
+    $parsed['e3'] = $json['result']['2']['mp3'];
+    $parsed['a4'] = $json['result']['3']['title'];
+    $parsed['b4'] = $json['result']['3']['singer'];
+    $parsed['c4'] = $json['result']['3']['img'];
+    $parsed['e4'] = $json['result']['3']['mp3'];
+    $parsed['a5'] = $json['result']['4']['title'];
+    $parsed['b5'] = $json['result']['4']['singer'];
+    $parsed['c5'] = $json['result']['4']['img'];
+    $parsed['e5'] = $json['result']['4']['mp3'];
+    return $parsed;
 }
 #-------------------------[Open]-------------------------#
 function youtube($keyword) {
@@ -736,16 +768,99 @@ if($message['type']=='text') {
 }
 }
 if($message['type']=='text') {
-    if ($command == '/music') {
-        $result = joox1($options);
+      if ($command == '/music') {
+        $result = joox2($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
+        array (
+          'type' => 'template',
+          'altText' => 'Result',
+          'template' => 
+          array (
+            'type' => 'carousel',
+            'columns' => 
+            array (
+              0 => 
+              array (
+                'thumbnailImageUrl' => $result['c1'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['a1'], 0, 47)).'...',
+                'actions' => 
                 array (
-                'type' => 'audio',
-                'originalContentUrl' => $result,
-                'duration' => 10000,
-                )
+                  0 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Play',
+                    'uri' => 'play '.$result['e1'],
+                  ),
+                ),
+              ),
+              1 => 
+              array (
+                'thumbnailImageUrl' => $result['c2'],
+                'imageBackgroundColor' => '#000000',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['a2'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Play',
+                    'uri' => 'play '.$result['e2'],
+                  ),
+                ),
+              ),  
+              2 => 
+              array (
+                'thumbnailImageUrl' => $result['c3'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['a3'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Play',
+                    'uri' => 'play '.$result['e3'],
+                  ),
+                ),
+              ),            
+              3 => 
+              array (
+                'thumbnailImageUrl' => $result['c4'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['a4'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Play',
+                    'uri' => 'play '.$result['e4'],
+                  ),
+                ),
+              ),          
+              4 => 
+              array (
+                'thumbnailImageUrl' => $result['c5'],
+                'imageBackgroundColor' => '#FFFFFF',
+                'text' => preg_replace('/[^a-z0-9_ ]/i', '', substr($result['a5'], 0, 47)).'...',
+                'actions' => 
+                array (
+                  0 => 
+                  array (
+                    'type' => 'message',
+                    'label' => 'Play',
+                    'uri' => 'play '.$result['e5'],
+                  ),
+                ),
+              ),            
+            ),
+            'imageAspectRatio' => 'rectangle',
+            'imageSize' => 'cover',
+          ),
+        )   
             )
         );
 }
@@ -1473,6 +1588,21 @@ if($message['type']=='text') {
             )
         );
     }
+}
+if($message['type']=='text') {
+    if ($command == 'play') {
+        $result = playm($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                'type' => 'audio',
+                'originalContentUrl' => $result,
+                'duration' => 10000,
+                )
+            )
+        );
+}
 }
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
