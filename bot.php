@@ -573,7 +573,7 @@ if ($command == '/menu') {
     );
 }
 if ($type == 'join') {
-    $text = "Terimakasih Telah invite aku ke group ini silahkan ketik Help untuk lihat command aku :)";
+    $text = "Thanks for invite me to your group!!! Please type help";
     $balas = array(
         'replyToken' => $replyToken,
         'messages' => array(
