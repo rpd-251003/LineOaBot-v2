@@ -1801,7 +1801,17 @@ if($message['type']=='text') {
                         'type' => 'image_carousel',
                         'columns' => 
                         array (
-                          0 => 
+			0 => 
+                          array (
+                            'imageUrl' => 'https://stuff.co.za/wp-content/uploads/2017/07/Joox-WeChat-header-810x400.png',
+                            'action' => 
+                            array (
+                              'type' => 'message',
+                              'label' => 'Creator',
+                              'text' => '/creator',
+                            ),
+                          ),
+                          1 => 
                           array (
                             'imageUrl' => 'https://pa1.narvii.com/6342/76ec050c2d184bbe728f7cedd48aadc29250b325_hq.gif',
                             'action' => 
