@@ -540,9 +540,32 @@ function qibla($keyword) {
 //show menu, saat join dan command,menu
 if ($command == '/menu') {
     $text .= "「Keyword ~」\n\n";
-    $text .= "- Help\n";
-    $text .= "- /music judul\n";
- $text .= "- /lirik judul\n";
+     $text .= "- Help\n";
+    $text .= "- /jam \n";
+    $text .= "- /quotes \n";
+    $text .= "- /say [teks] \n";
+    $text .= "- /definition [teks] \n";
+    $text .= "- /cooltext [teks] \n";
+    $text .= "- /shalat [lokasi] \n";
+    $text .= "- /qiblat [lokasi] \n";
+    $text .= "- /film [teks] \n";
+    $text .= "- /qr [teks] \n";
+    $text .= "- /neon [teks] \n";
+    $text .= "- /ahli [nama] \n";
+	$text .= "- /music [judul] \n";	
+    $text .= "- /arti-nama [nama] \n";
+    $text .= "- /lightgrafitti [teks] \n";
+    $text .= "- /wallgrafitti [teks] \n";
+    $text .= "- /film-syn [Judul] \n";
+    $text .= "- /lirik [Judul] \n";
+    $text .= "- /wikipedia [Judul] \n";
+  $text .= "- /brainly [pertanyaan] \n";
+  $text .= "- /youtube [Judul] \n";
+    $text .= "- /zodiak [tanggal lahir] \n";
+        $text .= "- /instagram [username] \n";
+        $text .= "- /jadwaltv [stasiun] \n";
+	$text .= "- /anime [nama] \n";	
+	$text .= "- /creator\n\n";	
     $text .= "\n「Done ~」";
     $balas = array(
         'replyToken' => $replyToken,
@@ -1780,22 +1803,12 @@ if($message['type']=='text') {
                         array (
                           0 => 
                           array (
-                            'imageUrl' => 'https://www.dailygizmo.tv/wp-content/uploads/2016/04/Joox-Logo-1440x937.jpg',
-                            'action' => 
-                            array (
-                              'type' => 'message',
-                              'label' => 'Music',
-                              'text' => 'Contoh: /music ran',
-                            ),
-                          ),
-                          1 => 
-                          array (
                             'imageUrl' => 'https://pa1.narvii.com/6342/76ec050c2d184bbe728f7cedd48aadc29250b325_hq.gif',
                             'action' => 
                             array (
                               'type' => 'message',
                               'label' => 'Lirik',
-                              'text' => 'Contoh : /lirik akad',
+                              'text' => '/menu',
                             ),
                           ),
                         ),
