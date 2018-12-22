@@ -1807,7 +1807,7 @@ if($message['type']=='text') {
                             'action' => 
                             array (
                               'type' => 'message',
-                              'label' => 'Lirik',
+                              'label' => 'Click Here',
                               'text' => '/menu',
                             ),
                           ),
